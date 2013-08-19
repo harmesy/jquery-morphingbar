@@ -15,17 +15,37 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('#progress-bar').morphingBar("aria-valuenow", {
-      15: function(el) {
-        el.addClass('progress-bar-success');
+      15: {
+        up: function(el) {
+          el.addClass('progress-bar-success');
+        },
+        down: function(el) {
+          el.removeClass('progress-bar-success');
+        }
       },
-      35: function(el) {
-        el.addClass('progress-bar-info');
+      35: {
+        up: function(el) {
+          el.addClass('progress-bar-info');
+        },
+        down: function(el) {
+          el.removeClass('progress-bar-info');
+        }
       },
-      60: function(el) {
-        el.addClass('progress-bar-warning');
+      60: {
+        up: function(el) {
+          el.addClass('progress-bar-warning');
+        },
+        down: function(el) {
+          el.removeClass('progress-bar-warning');
+        }
       },
-      70: function(el) {
-        el.addClass('progress-bar-error');
+      70: {
+        up: function(el) {
+          el.addClass('progress-bar-danger');
+        },
+        down: function(el) {
+          el.removeClass('progress-bar-danger');
+        }
       }
     });
 

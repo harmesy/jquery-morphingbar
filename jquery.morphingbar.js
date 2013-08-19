@@ -2,16 +2,31 @@
   "use strict";
   
   var defaults = {
-    25: function(el) {
-      $(el).addClass('progress-bar-success');
+    25: {
+      up: function(el) {
+        $(el).addClass('progress-bar-success');
+      },
+      down: function(el) {
+        $(el).removeClss('progress-bar-success');
+      }
     },
 
-    50: function(el) {
-      $(el).addClass('progress-bar-warning');
+    50: {
+      up: function(el) {
+        $(el).addClass('progress-bar-warning');
+      },
+      down: function(el) {
+        $(el).removeClss('progress-bar-warning');
+      }
     },
 
-    75: function(el) {
-      $(el).addClass('progress-bar-danger');
+    75: {
+      up: function(el) {
+        $(el).addClass('progress-bar-danger');
+      },
+      down: function(el) {
+        $(el).removeClss('progress-bar-danger');
+      }
     }
   };
   
@@ -55,8 +70,12 @@
       }
       
       if(level_to_apply && level_to_apply != current_level) {
+        if(current_level) {
+          options[current_level].down(_self);
+        }
+
+        options[level_to_apply].up(_self);
         current_level = level_to_apply;
-        options[level_to_apply](_self);
       }
     }
     
