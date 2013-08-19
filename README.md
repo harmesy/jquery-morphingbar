@@ -11,7 +11,7 @@ It's setup by default to work with twitter bootstrap, and has default levels at 
 
 You can see an example of the default behaviour with a bootstrap-designed progress bar in the `example/index.html` file.
 
-Unfortunately there is no reliable way that I know of to detect changes in an element width (I realize that IE will trigger a resize event, but since Firefox/Chrome/Opera/Safari will not it's kind of useless) so you will have to trigger the `morphingbar.updated' event in whatever code you use to update the progressbar width. Again, see the `example/index.html` file for details.
+Unfortunately there is no reliable way that I know of to detect changes in an element width (I realize that IE will trigger a resize event, but since Firefox/Chrome/Opera/Safari will not it's kind of useless) so you will have to trigger the `morphingbar.updated` event in whatever code you use to update the progressbar width. Again, see the `example/index.html` file for details.
 
 ##License details##
 
