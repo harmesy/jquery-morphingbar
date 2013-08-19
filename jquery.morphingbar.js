@@ -2,30 +2,36 @@
   "use strict";
   
   var defaults = {
-    25: {
+    20: {
       up: function(el) {
-        $(el).addClass('progress-bar-success');
+        el.addClass('progress-bar-success');
       },
       down: function(el) {
-        $(el).removeClss('progress-bar-success');
+        el.removeClass('progress-bar-success');
       }
     },
-
-    50: {
+    40: {
       up: function(el) {
-        $(el).addClass('progress-bar-warning');
+        el.addClass('progress-bar-info');
       },
       down: function(el) {
-        $(el).removeClss('progress-bar-warning');
+        el.removeClass('progress-bar-info');
       }
     },
-
-    75: {
+    60: {
       up: function(el) {
-        $(el).addClass('progress-bar-danger');
+        el.addClass('progress-bar-warning');
       },
       down: function(el) {
-        $(el).removeClss('progress-bar-danger');
+        el.removeClass('progress-bar-warning');
+      }
+    },
+    80: {
+      up: function(el) {
+        el.addClass('progress-bar-danger');
+      },
+      down: function(el) {
+        el.removeClass('progress-bar-danger');
       }
     }
   };

@@ -14,43 +14,10 @@
 <script src="../jquery.morphingbar.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#progress-bar').morphingBar("aria-valuenow", {
-      15: {
-        up: function(el) {
-          el.addClass('progress-bar-success');
-        },
-        down: function(el) {
-          el.removeClass('progress-bar-success');
-        }
-      },
-      35: {
-        up: function(el) {
-          el.addClass('progress-bar-info');
-        },
-        down: function(el) {
-          el.removeClass('progress-bar-info');
-        }
-      },
-      60: {
-        up: function(el) {
-          el.addClass('progress-bar-warning');
-        },
-        down: function(el) {
-          el.removeClass('progress-bar-warning');
-        }
-      },
-      70: {
-        up: function(el) {
-          el.addClass('progress-bar-danger');
-        },
-        down: function(el) {
-          el.removeClass('progress-bar-danger');
-        }
-      }
-    });
+    $('#progress-bar').morphingBar("aria-valuenow");
 
     var interval = setInterval(function() {
-      var increase_amount = 3;
+      var increase_amount = 10;
       var prog_bar = $('#progress-bar');
       var current_percent = parseInt(prog_bar.attr('aria-valuenow'), 10);
       
@@ -64,7 +31,7 @@
       prog_bar.css({
         width: current_percent + '%'
       });
-      console.log(current_percent);
+
       prog_bar.trigger('morphingBar.updated');
     }, 1000);
   });
