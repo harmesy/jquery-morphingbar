@@ -39,7 +39,7 @@
   $.fn.morphingBar = function(percent_attr, options) {
     var _self = this,
         levels, current_level;
-    options = options === undefined ? defaults : options
+    options = options || defaults
     
     function init() {
       levels = buildLevels();
