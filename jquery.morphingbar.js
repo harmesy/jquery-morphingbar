@@ -17,7 +17,7 @@
   
   $.fn.morphingBar = function(percent_attr, options) {
     var _self = this,
-        levels;
+        levels, current_level;
     options = options === undefined ? defaults : options
     
     function init() {
@@ -45,17 +45,18 @@
       return levels;
     }
     
-    function applyLevel(current_width) {
-      var callback;
- 
+    function applyLevel(current_percentage) {
+      var level_to_apply;
+
       for(var i in levels) {
-        if(current_width >= levels[i]) {
-          callback = options[levels[i]];
+        if(current_percentage >= levels[i]) {
+          level_to_apply = levels[i];
         }
       }
       
-      if(callback !== undefined) {
-        callback(_self);
+      if(level_to_apply && level_to_apply != current_level) {
+        current_level = level_to_apply;
+        options[level_to_apply](_self);
       }
     }
     
