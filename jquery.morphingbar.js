@@ -40,10 +40,27 @@
     var _self = this,
         levels, current_level;
     options = options || defaults
+    percent_attr = percent_attr || guessPercentAttr();
     
     function init() {
       levels = buildLevels();
       $(_self).trigger('morphingBar.updated');
+    }
+
+    function guessPercentAttr() {
+      var attr;
+
+      if($(_self).attr('aria-valuenow')) {
+        attr = 'aria-valuenow';
+      } else if($(_self).attr('data-value')) {
+        attr = 'data-value';
+      } else if($(_self).attr('data-current')) {
+        attr = 'data-current';
+      } else if($(_self).attr('data-current-percentage')) {
+        attr = 'data-current-percentage';
+      }
+
+      return attr;
     }
     
     function getPercentage() {
