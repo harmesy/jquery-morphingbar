@@ -5,19 +5,20 @@
     25: function(el) {
       $(el).addClass('progress-bar-success');
     },
+
     50: function(el) {
       $(el).addClass('progress-bar-warning');
     },
-    
+
     75: function(el) {
       $(el).addClass('progress-bar-danger');
     }
   };
   
-  $.fn.morphingBar = function(options) {
+  $.fn.morphingBar = function(percent_attr, options) {
     var _self = this,
         levels;
-    options = $.extend({}, defaults, options);
+    options = options === undefined ? defaults : options
     
     function init() {
       levels = buildLevels();
@@ -25,6 +26,10 @@
     }
     
     function getPercentage() {
+      if(percent_attr) {
+        return $(_self).attr(percent_attr);
+      }
+
       return Math.floor(100 * ($(_self).width() / $(_self).offsetParent().width()));
     }
     

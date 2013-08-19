@@ -14,20 +14,37 @@
 <script src="../jquery.morphingbar.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#progress-bar').morphingBar();
+    $('#progress-bar').morphingBar("aria-valuenow", {
+      15: function(el) {
+        el.addClass('progress-bar-success');
+      },
+      35: function(el) {
+        el.addClass('progress-bar-info');
+      },
+      60: function(el) {
+        el.addClass('progress-bar-warning');
+      },
+      70: function(el) {
+        el.addClass('progress-bar-error');
+      }
+    });
 
     var interval = setInterval(function() {
-      var increase_amount = 10;
+      var increase_amount = 3;
       var prog_bar = $('#progress-bar');
-      var current_width = Math.floor(100 * (parseInt(prog_bar.width(), 10) / parseInt(prog_bar.offsetParent().width(), 10)));
+      var current_percent = parseInt(prog_bar.attr('aria-valuenow'), 10);
       
-      if(current_width >= 100) {
+      if(current_percent >= 100) {
         clearInterval(interval);
       }
       
-      current_width + increase_amount <= 100 ? current_width += increase_amount : current_width = 100;
+      current_percent + increase_amount <= 100 ? current_percent += increase_amount : current_percent = 100;
       
-      prog_bar.css('width', current_width + '%');
+      prog_bar.attr('aria-valuenow', current_percent.toString());
+      prog_bar.css({
+        width: current_percent + '%'
+      });
+      console.log(current_percent);
       prog_bar.trigger('morphingBar.updated');
     }, 1000);
   });
